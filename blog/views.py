@@ -13,7 +13,7 @@ class CreatePost(LoginRequiredMixin,CreateView):
     model = Post
     fields = ['title', 'content']
 
-class PostList(LoginRequiredMixin,generic.ListView):
+class PostList(generic.ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'posts'
