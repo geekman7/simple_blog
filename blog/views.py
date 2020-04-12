@@ -9,11 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def index(request):
     return render(request,'blog/index.html')
 
-class CreatePost(CreateView):
+class CreatePost(LoginRequiredMixin,CreateView):
     model = Post
     fields = ['title', 'content']
 
-class PostList(generic.ListView):
+class PostList(LoginRequiredMixin,generic.ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'posts'
@@ -23,11 +23,11 @@ class DetailPost(LoginRequiredMixin,generic.DetailView):
     model = Post
     
 
-class UpdatePoste(generic.UpdateView):
+class UpdatePoste(LoginRequiredMixin,generic.UpdateView):
     model = Post
     fields = ['title', 'content']
 
 
-class DeletePost(generic.DeleteView):
+class DeletePost(LoginRequiredMixin,generic.DeleteView):
     model = Post
     success_url = reverse_lazy('blog:blog-index')
