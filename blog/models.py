@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 class Post(models.Model):
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=50)
     content = models.TextField(max_length=255)
     date = models.DateTimeField(default=datetime.now, blank=True)
 
